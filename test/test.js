@@ -12,7 +12,7 @@ describe('Test EML results', function() {
       metadatas: {},
     };
 
-    eml(__dirname + "/samples/1.eml", document, function(err, document) {
+    eml(__dirname + "/samples/cci.eml", document, function(err, document) {
       if(err) {
         throw err;
       }
@@ -26,7 +26,7 @@ describe('Test EML results', function() {
       document.should.have.property('datas');
       document.datas.should.have.property('html');
 
-      document.datas.html.should.include('vu qu&#39;elles sont supprimées');
+      document.datas.html.should.include('<div dir="ltr">h<br></div>');
       done();
     });
   });
