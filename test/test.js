@@ -18,16 +18,15 @@ describe('Test EML results', function() {
       }
 
       document.should.have.property('document_type', "email");
-      // document.should.have.property('metadatas');
-      // document.metadatas.should.have.property('to');
-      // document.metadatas.should.have.property('from');
-      // document.metadatas.should.have.property('subject');
-      // document.metadatas.should.have.property('text');
-      // document.should.have.property('datas');
-      // document.datas.should.have.property('html');
+      document.should.have.property('metadatas');
+      document.metadatas.should.have.property('to');
+      document.metadatas.should.have.property('from');
+      document.metadatas.should.have.property('subject');
+      document.metadatas.should.have.property('text');
+      document.should.have.property('datas');
+      document.datas.should.have.property('html');
 
-      // document.datas.html
-      //   .should.include('a string to include');
+      document.datas.html.should.include('vu qu&#39;elles sont supprimées');
       done();
     });
   });
