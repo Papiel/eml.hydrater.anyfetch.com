@@ -1,6 +1,6 @@
-# Hydrater boilerplate
+# Hydrater EML
 > Visit http://cluestr.com for details about Cluestr.
 
-Cluestr Hydrater boilerplate.
+Hydrate EML documents.
 
 Support: `support@papiel.fr`.

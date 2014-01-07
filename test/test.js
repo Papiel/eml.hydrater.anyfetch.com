@@ -2,10 +2,10 @@
 
 require('should');
 
-var pdf = require('../lib/');
+var eml = require('../lib/');
 
 
-describe('Test HYDRATER results', function() {
+describe('Test EML results', function() {
   it('returns the correct informations', function(done) {
     var document = {
       datas: {}

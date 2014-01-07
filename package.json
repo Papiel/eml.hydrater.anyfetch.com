@@ -1,5 +1,5 @@
 {
-  "name": "cluestr-hydrater-BOILERPLATE",
+  "name": "cluestr-hydrater-eml",
   "version": "1.0.0",
   "author": "Matthieu Bacconnier <matthieu.bacconnier@papiel.fr>",
   "contributors": [],
@@ -14,12 +14,12 @@
   "main": "./lib/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Papiel/hydrater-BOILERPLATE"
+    "url": "https://github.com/Papiel/hydrater-eml"
   },
   "keywords": [
     "cluestr",
     "hydrater",
-    "BOILERPLATE"
+    "eml"
   ],
   "dependencies": {
     "async": "0.2.x",

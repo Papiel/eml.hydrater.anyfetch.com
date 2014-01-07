@@ -18,5 +18,5 @@ module.exports = {
   env: node_env,
   port: process.env.PORT || default_port,
 
-  concurrency: process.env.HYDRATER_NAME_CONCURRENCY || default_concurrency
+  concurrency: process.env.HYDRATER_EML_CONCURRENCY || default_concurrency
 };
