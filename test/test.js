@@ -5,14 +5,14 @@ require('should');
 var eml = require('../lib/');
 
 
-describe('Test EML results', function() {
-  it('returns the correct informations', function(done) {
+describe('Test EML', function() {
+  it('returns datas for multipart text / html', function(done) {
     var document = {
       datas: {},
       metadatas: {},
     };
 
-    eml(__dirname + "/samples/cci.eml", document, function(err, document) {
+    eml(__dirname + "/samples/html-text.eml", document, function(err, document) {
       if(err) {
         throw err;
       }
@@ -24,20 +24,19 @@ describe('Test EML results', function() {
       document.metadatas.should.have.property('bcc');
       document.metadatas.should.have.property('from');
       document.metadatas.should.have.property('subject');
-      document.metadatas.should.have.property('text');
+      document.metadatas.should.have.property('text', 'Coucou, ca biche ?\n');
       document.should.have.property('datas');
-      document.datas.should.have.property('html');
+      document.datas.should.have.property('html', '<div dir="ltr">Coucou, ca biche ?<br></div>\n');
 
-      document.datas.html.should.include('<div dir="ltr">h<br></div>');
       done();
     });
   });
-  it('returns the correct informations', function(done) {
+  it('returns datas for html only version', function(done) {
     var document = {
       datas: {},
       metadatas: {},
     };
-    eml(__dirname + "/samples/1.eml", document, function(err, document) {
+    eml(__dirname + "/samples/html-only.eml", document, function(err, document) {
       if(err) {
         throw err;
       }
@@ -49,9 +48,9 @@ describe('Test EML results', function() {
       document.metadatas.should.have.property('bcc');
       document.metadatas.should.have.property('from');
       document.metadatas.should.have.property('subject');
-      document.metadatas.should.have.property('text');
+      document.metadatas.should.have.property('text', " Vu qu'elles sont supprimées même si elles servent à plusieurs personnes \n Bonjour Ca va ? \n");
       document.should.have.property('datas');
-      document.datas.should.have.property('html');
+      document.datas.should.have.property('html', "<p>Vu qu'elles sont supprimées même si elles servent à plusieurs personnes</p>\n<p>Bonjour</p><p>Ca va ?</p>\n");
 
       document.metadatas.text.should.include('Bonjour Ca va ?');
       done();
