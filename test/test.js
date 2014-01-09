@@ -6,6 +6,30 @@ var eml = require('../lib/');
 
 
 describe('Test EML', function() {
+  it('returns basic datas', function(done) {
+    var document = {
+      datas: {},
+      metadatas: {},
+    };
+
+    eml(__dirname + "/samples/sample.eml", document, function(err, document) {
+      if(err) {
+        throw err;
+      }
+
+      document.should.have.property('document_type', "email");
+      document.should.have.property('metadatas');
+      document.metadatas.should.have.property('to');
+      document.metadatas.should.have.property('cc');
+      document.metadatas.should.have.property('bcc');
+      document.metadatas.should.have.property('from');
+      document.metadatas.should.have.property('subject');
+      document.metadatas.should.have.property('text', 'Hello there!\n');
+
+      done();
+    });
+  });
+
   it('returns datas for multipart text / html', function(done) {
     var document = {
       datas: {},
@@ -24,13 +48,14 @@ describe('Test EML', function() {
       document.metadatas.should.have.property('bcc');
       document.metadatas.should.have.property('from');
       document.metadatas.should.have.property('subject');
-      document.metadatas.should.have.property('text', 'Coucou, ca biche ?\n');
+      document.metadatas.should.have.property('text', 'Hello there!\n');
       document.should.have.property('datas');
-      document.datas.should.have.property('html', '<div dir="ltr">Coucou, ca biche ?<br></div>\n');
+      document.datas.should.have.property('html', '<div dir="ltr">Hello there!<br></div>\n');
 
       done();
     });
   });
+
   it('returns datas for html only version', function(done) {
     var document = {
       datas: {},
