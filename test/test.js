@@ -24,7 +24,7 @@ describe('Test EML', function() {
       document.metadatas.should.have.property('bcc').and.eql([ { address: 'moby69@hotmail.fr', name: '' }, { address: 'hugoduroux@gmail.com', name: 'Hugo DUROUX' } ]);
       document.metadatas.should.have.property('from').and.eql([ { address: 'hugo.duroux@gmail.com', name: 'Hugo DUROUX' } ]);
       document.metadatas.should.have.property('subject', 'sample');
-      document.metadatas.should.have.property('text', 'Hello there!\n');
+      document.metadatas.should.have.property('text', 'Hello there!');
 
       done();
     });
@@ -41,8 +41,8 @@ describe('Test EML', function() {
         throw err;
       }
 
-      document.should.have.property('metadatas').with.property('text', 'Hello there!\n');
-      document.should.have.property('datas').with.property('html', '<div dir="ltr">Hello there! In html.<br></div>\n');
+      document.should.have.property('metadatas').with.property('text', 'Hello there!');
+      document.should.have.property('datas').with.property('html', '<div dir="ltr">Hello there! In html.<br></div>');
 
       done();
     });
@@ -58,8 +58,8 @@ describe('Test EML', function() {
         throw err;
       }
 
-      document.should.have.property('metadatas').with.property('text', " Vu qu'elles sont supprimées même si elles servent à plusieurs personnes \n Bonjour Ca va ? \n");
-      document.should.have.property('datas').with.property('html', "<p>Vu qu'elles sont supprimées même si elles servent à plusieurs personnes</p>\n<p>Bonjour</p><p>Ca va ?</p>\n");
+      document.should.have.property('metadatas').with.property('text', "Vu qu'elles sont supprimées même si elles servent à plusieurs personnes \n Bonjour Ca va ?");
+      document.should.have.property('datas').with.property('html', "<p>Vu qu'elles sont supprimées même si elles servent à plusieurs personnes</p>\n<p>Bonjour</p><p>Ca va ?</p>");
 
       done();
     });
