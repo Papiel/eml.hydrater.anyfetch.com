@@ -3,7 +3,7 @@
 require('should');
 
 var eml = require('../lib/');
-
+var CluestrClient = require('cluestr');
 
 describe('Test EML', function() {
   it('returns basic datas', function(done) {
@@ -61,6 +61,25 @@ describe('Test EML', function() {
       document.should.have.property('metadatas').with.property('text', "Vu qu'elles sont supprimées même si elles servent à plusieurs personnes \n Bonjour Ca va ?");
       document.should.have.property('datas').with.property('html', "<p>Vu qu'elles sont supprimées même si elles servent à plusieurs personnes</p>\n<p>Bonjour</p><p>Ca va ?</p>");
 
+      done();
+    });
+  });
+  process.env.CLUESTR_SERVER = 'http://localhost:1338';
+  // Create a fake HTTP server
+  var frontServer = CluestrClient.debug.createTestApiServer();
+  frontServer.listen(1338);
+  it('attachments', function(done) {
+    var document = {
+      datas: {},
+      metadatas: {},
+      access_token: "123",
+      identifier: "azerty",
+    };
+    eml(__dirname + "/samples/attachment.eml", document, function(err, document) {
+      if(err) {
+        throw err;
+      }
+     
       done();
     });
   });
