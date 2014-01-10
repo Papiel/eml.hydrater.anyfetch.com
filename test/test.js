@@ -64,10 +64,17 @@ describe('Test EML', function() {
       done();
     });
   });
+
   process.env.CLUESTR_SERVER = 'http://localhost:1338';
+  var count = 0;
+  var cb = function(url){
+    console.log(url);
+    count += 1;
+  };
   // Create a fake HTTP server
-  var frontServer = CluestrClient.debug.createTestApiServer();
-  frontServer.listen(1338);
+  var apiServer = CluestrClient.debug.createTestApiServer(cb);
+  apiServer.listen(1338);
+
   it('attachments', function(done) {
     var document = {
       datas: {},
@@ -75,11 +82,12 @@ describe('Test EML', function() {
       access_token: "123",
       identifier: "azerty",
     };
+
     eml(__dirname + "/samples/attachment.eml", document, function(err, document) {
       if(err) {
         throw err;
       }
-     
+      count.should.eql(2);
       done();
     });
   });
