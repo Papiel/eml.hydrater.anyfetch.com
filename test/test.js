@@ -74,8 +74,7 @@ describe('Test EML', function() {
   var apiServer = CluestrClient.debug.createTestApiServer(cb);
   apiServer.listen(1338);
 
-  it('attachments', function(done) {
-    //Should create new documents for each attachment
+  it('create new documents for each attachment', function(done) {
     var document = {
       datas: {},
       metadatas: {},
@@ -83,7 +82,7 @@ describe('Test EML', function() {
       identifier: "azerty",
     };
 
-    eml(__dirname + "/samples/attachment.eml", document, function(err, document) {
+    eml(__dirname + "/samples/attachment.eml", document, function(err) {
       if(err) {
         throw err;
       }
