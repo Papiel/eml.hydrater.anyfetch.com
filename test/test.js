@@ -68,7 +68,6 @@ describe('Test EML', function() {
   process.env.CLUESTR_SERVER = 'http://localhost:1338';
   var count = 0;
   var cb = function(url){
-    console.log(url);
     if (url.indexOf("/file") !== -1) {
       count += 1;
     }
