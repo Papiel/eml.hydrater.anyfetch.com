@@ -26,7 +26,7 @@
     "cluestr-file-hydrater": "x.x.x",
     "mailparser": "~0.4.0",
     "node-html-encoder": "0.0.2",
-    "cluestr": "~0.2.3"
+    "cluestr": "0.x.x"
   },
   "devDependencies": {
     "mocha": "1.15.x",
