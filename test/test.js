@@ -67,8 +67,11 @@ describe('Test EML', function() {
 
   process.env.CLUESTR_SERVER = 'http://localhost:1338';
   var count = 0;
-  var cb = function(){
-    count += 1;
+  var cb = function(url){
+    console.log(url);
+    if (url.indexOf("/file") !== -1) {
+      count += 1;
+    }
   };
   // Create a fake HTTP server
   var apiServer = CluestrClient.debug.createTestApiServer(cb);
@@ -86,7 +89,7 @@ describe('Test EML', function() {
       if(err) {
         throw err;
       }
-      count.should.eql(2);
+      count.should.eql(1);
       done();
     });
   });
