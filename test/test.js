@@ -26,6 +26,7 @@ describe('Test EML', function() {
       document.metadatas.should.have.property('subject', 'sample');
       document.metadatas.should.have.property('text', 'Hello there!');
       document.should.have.property('creation_date');
+      console.log(document.creation_date);
 
       done();
     });
