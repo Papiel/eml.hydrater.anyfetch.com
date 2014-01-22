@@ -25,6 +25,7 @@ describe('Test EML', function() {
       document.metadatas.should.have.property('from').and.eql([ { address: 'hugo.duroux@gmail.com', name: 'Hugo DUROUX' } ]);
       document.metadatas.should.have.property('subject', 'sample');
       document.metadatas.should.have.property('text', 'Hello there!');
+      document.should.have.property('creation_date');
 
       done();
     });
@@ -92,4 +93,5 @@ describe('Test EML', function() {
       done();
     });
   });
+
 });
