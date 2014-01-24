@@ -26,7 +26,6 @@ describe('Test EML', function() {
       document.metadatas.should.have.property('subject', 'sample');
       document.metadatas.should.have.property('text', 'Hello there!');
       document.should.have.property('creation_date');
-      console.log(document.creation_date);
 
       done();
     });
@@ -70,6 +69,7 @@ describe('Test EML', function() {
   process.env.CLUESTR_SERVER = 'http://localhost:1338';
   var count = 0;
   var cb = function(url){
+    console.log(url);
     if (url.indexOf("/file") !== -1) {
       count += 1;
     }
@@ -94,5 +94,7 @@ describe('Test EML', function() {
       done();
     });
   });
-
+  after(function(){
+    apiServer.close();
+  });
 });
