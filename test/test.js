@@ -67,10 +67,14 @@ describe('Test EML', function() {
   });
 
   process.env.CLUESTR_SERVER = 'http://localhost:1338';
-  var count = 0;
+  var countFile = 0;
+  var countDelete = 0;
   var cb = function(url){
     if (url.indexOf("/file") !== -1) {
-      count += 1;
+      countFile += 1;
+    }
+    if (url.indexOf("DELETE") !== -1) {
+      countDelete += 1;
     }
   };
   // Create a fake HTTP server
@@ -89,9 +93,12 @@ describe('Test EML', function() {
       if(err) {
         throw err;
       }
-      count.should.eql(1);
+      countFile.should.eql(1);
+      countDelete.should.eql(1);
       done();
     });
   });
-
+  after(function(){
+    apiServer.close();
+  });
 });
