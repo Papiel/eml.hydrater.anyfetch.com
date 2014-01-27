@@ -58,8 +58,25 @@ describe('Test EML', function() {
         throw err;
       }
 
-      document.should.have.property('metadatas').with.property('text', 'Hello there!');
+      document.should.have.property('metadatas').with.property('text').and.include('Hello there!');
       document.should.have.property('datas').with.property('html', '<div dir="ltr">Hello there! In html.<br></div>');
+
+      done();
+    });
+  });
+
+  it('escapes html in text', function(done) {
+    var document = {
+      datas: {},
+      metadatas: {},
+    };
+
+    eml(__dirname + "/samples/html-text.eml", document, function(err, document) {
+      if(err) {
+        throw err;
+      }
+
+      document.should.have.property('metadatas').with.property('text', 'Hello there! &lt;3');
 
       done();
     });
