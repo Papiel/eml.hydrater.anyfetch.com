@@ -5,6 +5,22 @@ require('should');
 var eml = require('../lib/');
 var CluestrClient = require('cluestr');
 
+process.env.CLUESTR_SERVER = 'http://localhost:1338';
+var countFile = 0;
+var countDelete = 0;
+var cb = function(url){
+  if (url.indexOf("/file") !== -1) {
+    countFile += 1;
+  }
+};
+// Create a fake HTTP server
+var apiServer = CluestrClient.debug.createTestApiServer(cb);
+apiServer.listen(1338);
+
+after(function(){
+  apiServer.close();
+});
+
 describe('Test EML', function() {
   it('returns basic datas', function(done) {
     var document = {
@@ -66,20 +82,6 @@ describe('Test EML', function() {
     });
   });
 
-  process.env.CLUESTR_SERVER = 'http://localhost:1338';
-  var countFile = 0;
-  var countDelete = 0;
-  var cb = function(url){
-    if (url.indexOf("/file") !== -1) {
-      countFile += 1;
-    }
-    if (url.indexOf("DELETE") !== -1) {
-      countDelete += 1;
-    }
-  };
-  // Create a fake HTTP server
-  var apiServer = CluestrClient.debug.createTestApiServer(cb);
-  apiServer.listen(1338);
 
   it('create new documents for each attachment', function(done) {
     var document = {
@@ -94,11 +96,8 @@ describe('Test EML', function() {
         throw err;
       }
       countFile.should.eql(1);
-      countDelete.should.eql(1);
       done();
     });
   });
-  after(function(){
-    apiServer.close();
-  });
+
 });
