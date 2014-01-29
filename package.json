@@ -1,8 +1,13 @@
 {
-  "name": "cluestr-hydrater-eml",
+  "name": "anyfetch-hydrater-eml",
   "version": "1.0.0",
   "author": "Matthieu Bacconnier <matthieu.bacconnier@papiel.fr>",
-  "contributors": [],
+  "contributors": [
+      {
+      "name": "Hugo Duroux",
+      "email": "hugo.duroux@gmail.com"
+    }
+  ],
   "bin": {
     "server": "./bin/server"
   },
@@ -14,19 +19,19 @@
   "main": "./lib/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Papiel/hydrater-eml"
+    "url": "https://github.com/Papiel/eml.hydrater.anyfetch.com"
   },
   "keywords": [
-    "cluestr",
+    "anyfetch",
     "hydrater",
     "eml"
   ],
   "dependencies": {
     "async": "0.2.x",
-    "cluestr-file-hydrater": "x.x.x",
+    "anyfetch-file-hydrater": "x.x.x",
     "mailparser": "~0.4.0",
     "node-html-encoder": "0.0.2",
-    "cluestr": "0.x.x"
+    "anyfetch": "0.x.x"
   },
   "devDependencies": {
     "mocha": "1.15.x",
@@ -34,7 +39,7 @@
     "supertest": "0.8.x",
     "jshint": "2.3.x"
   },
-  "licence": "Copyright Papiel",
+  "licence": "MIT",
   "engines": {
     "node": ">=0.10"
   }
