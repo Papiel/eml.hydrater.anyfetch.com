@@ -3,9 +3,9 @@
 require('should');
 
 var eml = require('../lib/');
-var CluestrClient = require('cluestr');
+var AnyFetchClient = require('anyfetch');
 
-process.env.CLUESTR_SERVER = 'http://localhost:1338';
+process.env.ANYFETCH_SERVER = 'http://localhost:1338';
 var countFile = 0;
 var countDelete = 0;
 var cb = function(url){
@@ -14,7 +14,7 @@ var cb = function(url){
   }
 };
 // Create a fake HTTP server
-var apiServer = CluestrClient.debug.createTestApiServer(cb);
+var apiServer = AnyFetchClient.debug.createTestApiServer(cb);
 apiServer.listen(1338);
 
 after(function(){
