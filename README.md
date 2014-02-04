@@ -1,5 +1,5 @@
 # Hydrater EML
-> Visit http://cluestr.com for details about Cluestr.
+> Visit http://anyfetch.com for details about AnyFetch.
 
 Hydrate EML documents.
 
