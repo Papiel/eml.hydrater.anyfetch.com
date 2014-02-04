@@ -5,9 +5,8 @@ require('should');
 var eml = require('../lib/');
 var AnyFetchClient = require('anyfetch');
 
-process.env.ANYFETCH_SERVER = 'http://localhost:1338';
+process.env.ANYFETCH_API_URL = 'http://localhost:1338';
 var countFile = 0;
-var countDelete = 0;
 var cb = function(url){
   if (url.indexOf("/file") !== -1) {
     countFile += 1;
