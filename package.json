@@ -31,7 +31,7 @@
     "anyfetch-file-hydrater": "x.x.x",
     "mailparser": "~0.4.1",
     "node-html-encoder": "0.0.2",
-    "anyfetch": "0.x.x",
+    "anyfetch": "0.x.x"
   },
   "devDependencies": {
     "mocha": "1.17.x",
