@@ -116,4 +116,21 @@ describe('Test EML', function() {
     });
   });
 
+  it('should include cid images into base64 HTML', function(done){
+    var document = {
+      datas: {},
+      metadatas: {},
+      access_token: "123",
+      identifier: "azerty",
+    };
+    eml(__dirname + "/samples/image-included.eml", document, function(err, document) {
+      if(err) {
+        throw err;
+      }
+
+      document.should.have.property('datas').with.property('html').and.include("6WuNurkZ3XOx8a5UuO+fDm66FRskS+RmVqwFo9");
+
+      done();
+    });
+  });
 });
