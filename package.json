@@ -32,7 +32,6 @@
     "mailparser": "~0.4.1",
     "node-html-encoder": "0.0.2",
     "anyfetch": "0.x.x",
-    "base64": "~2.1.0"
   },
   "devDependencies": {
     "mocha": "1.17.x",
