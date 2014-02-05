@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "Matthieu Bacconnier <matthieu.bacconnier@papiel.fr>",
   "contributors": [
-      {
+    {
       "name": "Hugo Duroux",
       "email": "hugo.duroux@gmail.com"
     }
@@ -31,7 +31,8 @@
     "anyfetch-file-hydrater": "x.x.x",
     "mailparser": "~0.4.1",
     "node-html-encoder": "0.0.2",
-    "anyfetch": "0.x.x"
+    "anyfetch": "0.x.x",
+    "base64": "~2.1.0"
   },
   "devDependencies": {
     "mocha": "1.17.x",
