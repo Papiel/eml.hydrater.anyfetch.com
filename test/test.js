@@ -152,24 +152,4 @@ describe('Test EML', function() {
       done();
     });
   });
-
-  it('attachments should have mail as related', function(done){
-    var document = {
-      datas: {},
-      metadatas: {},
-      access_token: "123",
-      identifier: "azertyui",
-      id: "0123456789abcdef",
-    };
-    eml(__dirname + "/samples/attachment.eml", document, function(err, document) {
-      if(err) {
-        throw err;
-      }
-      
-      // I don't write bug, so i don't need to write test.
-
-      done();
-    });
-  });
-
 });
