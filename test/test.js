@@ -134,21 +134,20 @@ describe('Test EML', function() {
     });
   });
 
-  it('Mail should have attachments as related', function(done){
+  it('should have a date', function(done){
     var document = {
       datas: {},
       metadatas: {},
       access_token: "123",
-      identifier: "azertyu",
-      id: "0123456789",
+      identifier: "azerty",
     };
-    eml(__dirname + "/samples/attachment.eml", document, function(err, document) {
+    eml(__dirname + "/samples/image-included.eml", document, function(err, document) {
       if(err) {
         throw err;
       }
-      
-      document.should.have.property('related', [document.identifier + "/CV.docx",]);
 
+      document.should.have.property('metadatas').with.property('date', new Date('Fri Jan 18 2013 12:09:13 GMT+0100 (CET)'));
+      document.should.have.property('creation_date', new Date('Fri Jan 18 2013 12:09:13 GMT+0100 (CET)'));
       done();
     });
   });
