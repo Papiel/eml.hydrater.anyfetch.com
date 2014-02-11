@@ -133,4 +133,23 @@ describe('Test EML', function() {
       done();
     });
   });
+
+  it('Mail should have attachments as related', function(done){
+    var document = {
+      datas: {},
+      metadatas: {},
+      access_token: "123",
+      identifier: "azertyu",
+      id: "0123456789",
+    };
+    eml(__dirname + "/samples/attachment.eml", document, function(err, document) {
+      if(err) {
+        throw err;
+      }
+      
+      document.should.have.property('related', [document.identifier + "/CV.docx",]);
+
+      done();
+    });
+  });
 });
