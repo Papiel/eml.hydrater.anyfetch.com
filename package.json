@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "async": "0.2.x",
-    "anyfetch-file-hydrater": "x.x.x",
+    "anyfetch-file-hydrater": "~0.2.3",
     "mailparser": "~0.4.1",
     "node-html-encoder": "0.0.2",
     "anyfetch": "0.x.x",
