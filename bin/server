@@ -1,11 +1,5 @@
 #!/bin/env node
 
-// Load Node Time
-require('nodetime').profile({
-    accountKey: '44b440842ce0a2541dd964a7d85646287731af15',
-    appName: 'eml hydrater'
-  });
-
 // Load configuration
 var config = require("../config/configuration.js");
 var server = require('../app.js');
