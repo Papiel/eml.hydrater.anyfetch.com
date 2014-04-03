@@ -3,7 +3,6 @@
 require('should');
 
 var eml = require('../lib/');
-/*
 var AnyfetchClient = require('anyfetch');
 
 process.env.ANYFETCH_API_URL = 'http://localhost:1338';
@@ -13,34 +12,15 @@ var cb = function(url){
     countFile += 1;
   }
 };
+
 // Create a fake HTTP server
 var apiServer = AnyfetchClient.debug.createTestApiServer(cb);
 apiServer.listen(1338);
-
 after(function(){
   apiServer.close();
 });
-*/
+
 describe('Test EML', function() {
-
-  it.only('test', function(done) {
-    var document = {
-      datas: {},
-      metadatas: {},
-      access_token: '0cca458602bcdef11d6fa26b2012244d4dfe77214f90ad381244ef5267fc7424',
-      identifier: "http://localprovider.local:0cca458602bcdef11d6fa26b2012244d4dfe77214f90ad381244ef5267fc7424//home/node/test/bugged.eml"
-    };
-
-    eml(__dirname + "/samples/bugged.eml", document, function(err, document) {
-      if(err) {
-        throw err;
-      }
-
-      done();
-    });
-  });
-
-
   it('returns basic datas', function(done) {
     var document = {
       datas: {},
