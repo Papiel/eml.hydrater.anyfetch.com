@@ -31,7 +31,7 @@
     "anyfetch-file-hydrater": ">=0.2.6",
     "mailparser": "~0.4.1",
     "node-html-encoder": "0.0.2",
-    "anyfetch": ">=0.2.15",
+    "anyfetch": ">=0.2.17",
     "nodetime": "^0.8.15"
   },
   "devDependencies": {
