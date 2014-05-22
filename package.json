@@ -32,7 +32,8 @@
     "mailparser": "~0.4.1",
     "node-html-encoder": "0.0.2",
     "anyfetch": ">=0.2.17",
-    "nodetime": "^0.8.15"
+    "nodetime": "^0.8.15",
+    "newrelic": "^1.5.5"
   },
   "devDependencies": {
     "mocha": "1.17.x",
