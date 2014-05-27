@@ -27,20 +27,27 @@ describe('Test EML', function() {
       metadatas: {},
     };
 
-    eml(__dirname + "/samples/sample.eml", document, function(err, document) {
+    var changes = {
+      metadatas: {},
+      user_access: [],
+      actions: {},
+      datas: {}
+    };
+
+    eml(__dirname + "/samples/sample.eml", document, changes, function(err, changes) {
       if(err) {
         throw err;
       }
 
-      document.should.have.property('document_type', "email");
-      document.should.have.property('metadatas');
-      document.metadatas.should.have.property('to').and.eql([ { address: 'hugoduroux@free.fr', name: '' } ]);
-      document.metadatas.should.have.property('cc').and.eql([]);
-      document.metadatas.should.have.property('bcc').and.eql([ { address: 'moby69@hotmail.fr', name: '' }, { address: 'hugoduroux@gmail.com', name: 'Hugo DUROUX' } ]);
-      document.metadatas.should.have.property('from').and.eql([ { address: 'hugo.duroux@gmail.com', name: 'Hugo DUROUX' } ]);
-      document.metadatas.should.have.property('subject', 'sample');
-      document.metadatas.should.have.property('text', 'Hello there!');
-      document.should.have.property('creation_date');
+      changes.should.have.property('document_type', "email");
+      changes.should.have.property('metadatas');
+      changes.metadatas.should.have.property('to').and.eql([ { address: 'hugoduroux@free.fr', name: '' } ]);
+      changes.metadatas.should.have.property('cc').and.eql([]);
+      changes.metadatas.should.have.property('bcc').and.eql([ { address: 'moby69@hotmail.fr', name: '' }, { address: 'hugoduroux@gmail.com', name: 'Hugo DUROUX' } ]);
+      changes.metadatas.should.have.property('from').and.eql([ { address: 'hugo.duroux@gmail.com', name: 'Hugo DUROUX' } ]);
+      changes.metadatas.should.have.property('subject', 'sample');
+      changes.metadatas.should.have.property('text', 'Hello there!');
+      changes.should.have.property('creation_date');
 
       done();
     });
@@ -52,13 +59,20 @@ describe('Test EML', function() {
       metadatas: {},
     };
 
-    eml(__dirname + "/samples/html-text.eml", document, function(err, document) {
+    var changes = {
+      metadatas: {},
+      user_access: [],
+      actions: {},
+      datas: {}
+    };
+
+    eml(__dirname + "/samples/html-text.eml", document, changes, function(err, changes) {
       if(err) {
         throw err;
       }
 
-      document.should.have.property('metadatas').with.property('text').and.include('Hello there!');
-      document.should.have.property('datas').with.property('html', '<div dir="ltr">Hello there! In html.<br></div>');
+      changes.should.have.property('metadatas').with.property('text').and.include('Hello there!');
+      changes.should.have.property('datas').with.property('html', '<div dir="ltr">Hello there! In html.<br></div>');
 
       done();
     });
@@ -70,12 +84,19 @@ describe('Test EML', function() {
       metadatas: {},
     };
 
-    eml(__dirname + "/samples/html-text.eml", document, function(err, document) {
+    var changes = {
+      metadatas: {},
+      user_access: [],
+      actions: {},
+      datas: {}
+    };
+
+    eml(__dirname + "/samples/html-text.eml", document, changes, function(err, changes) {
       if(err) {
         throw err;
       }
 
-      document.should.have.property('metadatas').with.property('text', 'Hello there! &lt;3');
+      changes.should.have.property('metadatas').with.property('text', 'Hello there! &lt;3');
 
       done();
     });
@@ -86,13 +107,21 @@ describe('Test EML', function() {
       datas: {},
       metadatas: {},
     };
-    eml(__dirname + "/samples/html-only.eml", document, function(err, document) {
+
+    var changes = {
+      metadatas: {},
+      user_access: [],
+      actions: {},
+      datas: {}
+    };
+
+    eml(__dirname + "/samples/html-only.eml", document, changes, function(err, changes) {
       if(err) {
         throw err;
       }
 
-      document.should.have.property('metadatas').with.property('text', "Vu qu'elles sont supprimées même si elles servent à plusieurs personnes \n Bonjour Ca va ?");
-      document.should.have.property('datas').with.property('html', "<p>Vu qu'elles sont supprimées même si elles servent à plusieurs personnes</p>\n<p>Bonjour</p><p>Ca va ?</p>");
+      changes.should.have.property('metadatas').with.property('text', "Vu qu'elles sont supprimées même si elles servent à plusieurs personnes \n Bonjour Ca va ?");
+      changes.should.have.property('datas').with.property('html', "<p>Vu qu'elles sont supprimées même si elles servent à plusieurs personnes</p>\n<p>Bonjour</p><p>Ca va ?</p>");
 
       done();
     });
@@ -107,7 +136,14 @@ describe('Test EML', function() {
       identifier: "azerty",
     };
 
-    eml(__dirname + "/samples/attachment.eml", document, function(err) {
+    var changes = {
+      metadatas: {},
+      user_access: [],
+      actions: {},
+      datas: {}
+    };
+
+    eml(__dirname + "/samples/attachment.eml", document, changes, function(err) {
       if(err) {
         throw err;
       }
@@ -123,12 +159,20 @@ describe('Test EML', function() {
       access_token: "123",
       identifier: "azerty",
     };
-    eml(__dirname + "/samples/image-included.eml", document, function(err, document) {
+
+    var changes = {
+      metadatas: {},
+      user_access: [],
+      actions: {},
+      datas: {}
+    };
+
+    eml(__dirname + "/samples/image-included.eml", document, changes, function(err, changes) {
       if(err) {
         throw err;
       }
 
-      document.should.have.property('datas').with.property('html').and.include("6WuNurkZ3XOx8a5UuO+fDm66FRskS+RmVqwFo9");
+      changes.should.have.property('datas').with.property('html').and.include("6WuNurkZ3XOx8a5UuO+fDm66FRskS+RmVqwFo9");
 
       done();
     });
@@ -141,13 +185,21 @@ describe('Test EML', function() {
       access_token: "123",
       identifier: "azerty",
     };
-    eml(__dirname + "/samples/image-included.eml", document, function(err, document) {
+
+    var changes = {
+      metadatas: {},
+      user_access: [],
+      actions: {},
+      datas: {}
+    };
+
+    eml(__dirname + "/samples/image-included.eml", document, changes, function(err, changes) {
       if(err) {
         throw err;
       }
 
-      document.should.have.property('metadatas').with.property('date', new Date('Fri Jan 18 2013 12:09:13 GMT+0100 (CET)'));
-      document.should.have.property('creation_date', new Date('Fri Jan 18 2013 12:09:13 GMT+0100 (CET)'));
+      changes.should.have.property('metadatas').with.property('date', new Date('Fri Jan 18 2013 12:09:13 GMT+0100 (CET)'));
+      changes.should.have.property('creation_date', new Date('Fri Jan 18 2013 12:09:13 GMT+0100 (CET)'));
       done();
     });
   });

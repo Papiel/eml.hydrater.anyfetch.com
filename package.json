@@ -27,11 +27,11 @@
     "eml"
   ],
   "dependencies": {
-    "async": "0.2.x",
-    "anyfetch-file-hydrater": ">=0.2.6",
+    "async": "0.9.x",
+    "anyfetch-file-hydrater": ">=0.2.9",
     "mailparser": "~0.4.1",
     "node-html-encoder": "0.0.2",
-    "anyfetch": ">=0.2.17",
+    "anyfetch": ">=0.2.21",
     "nodetime": "^0.8.15",
     "newrelic": "^1.5.5"
   },
