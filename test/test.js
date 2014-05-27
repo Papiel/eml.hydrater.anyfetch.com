@@ -4,6 +4,7 @@ require('should');
 
 var eml = require('../lib/');
 var AnyfetchClient = require('anyfetch');
+var anyfetchFileHydrater = require('anyfetch-file-hydrater');
 
 process.env.ANYFETCH_API_URL = 'http://localhost:1338';
 var countFile = 0;
@@ -27,12 +28,7 @@ describe('Test EML', function() {
       metadatas: {},
     };
 
-    var changes = {
-      metadatas: {},
-      user_access: [],
-      actions: {},
-      datas: {}
-    };
+    var changes = anyfetchFileHydrater.defaultChanges();
 
     eml(__dirname + "/samples/sample.eml", document, changes, function(err, changes) {
       if(err) {
@@ -59,12 +55,7 @@ describe('Test EML', function() {
       metadatas: {},
     };
 
-    var changes = {
-      metadatas: {},
-      user_access: [],
-      actions: {},
-      datas: {}
-    };
+    var changes = anyfetchFileHydrater.defaultChanges();
 
     eml(__dirname + "/samples/html-text.eml", document, changes, function(err, changes) {
       if(err) {
@@ -84,12 +75,7 @@ describe('Test EML', function() {
       metadatas: {},
     };
 
-    var changes = {
-      metadatas: {},
-      user_access: [],
-      actions: {},
-      datas: {}
-    };
+    var changes = anyfetchFileHydrater.defaultChanges();
 
     eml(__dirname + "/samples/html-text.eml", document, changes, function(err, changes) {
       if(err) {
@@ -108,12 +94,7 @@ describe('Test EML', function() {
       metadatas: {},
     };
 
-    var changes = {
-      metadatas: {},
-      user_access: [],
-      actions: {},
-      datas: {}
-    };
+    var changes = anyfetchFileHydrater.defaultChanges();
 
     eml(__dirname + "/samples/html-only.eml", document, changes, function(err, changes) {
       if(err) {
@@ -136,12 +117,7 @@ describe('Test EML', function() {
       identifier: "azerty",
     };
 
-    var changes = {
-      metadatas: {},
-      user_access: [],
-      actions: {},
-      datas: {}
-    };
+    var changes = anyfetchFileHydrater.defaultChanges();
 
     eml(__dirname + "/samples/attachment.eml", document, changes, function(err) {
       if(err) {
@@ -160,12 +136,7 @@ describe('Test EML', function() {
       identifier: "azerty",
     };
 
-    var changes = {
-      metadatas: {},
-      user_access: [],
-      actions: {},
-      datas: {}
-    };
+    var changes = anyfetchFileHydrater.defaultChanges();
 
     eml(__dirname + "/samples/image-included.eml", document, changes, function(err, changes) {
       if(err) {
@@ -186,12 +157,7 @@ describe('Test EML', function() {
       identifier: "azerty",
     };
 
-    var changes = {
-      metadatas: {},
-      user_access: [],
-      actions: {},
-      datas: {}
-    };
+    var changes = anyfetchFileHydrater.defaultChanges();
 
     eml(__dirname + "/samples/image-included.eml", document, changes, function(err, changes) {
       if(err) {
