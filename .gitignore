@@ -23,3 +23,5 @@ docs/*
 
 # Jekyll artifacts
 _site/*
+
+.directory
