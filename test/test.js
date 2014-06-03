@@ -5,7 +5,6 @@ require('should');
 var eml = require('../lib/');
 var AnyfetchClient = require('anyfetch');
 var anyfetchFileHydrater = require('anyfetch-file-hydrater');
-var hydrationError = anyfetchFileHydrater.hydrationError;
 
 process.env.ANYFETCH_API_URL = 'http://localhost:1338';
 var countFile = 0;
