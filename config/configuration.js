@@ -17,6 +17,6 @@ if(node_env === "production") {
 module.exports = {
   env: node_env,
   port: process.env.PORT || default_port,
-
+  maxSockets: process.env.MAX_SOCKET || 30,
   concurrency: process.env.HYDRATER_EML_CONCURRENCY || default_concurrency
 };
