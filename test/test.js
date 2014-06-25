@@ -128,7 +128,7 @@ describe('Test EML', function() {
     });
   });
 
-  it('should include cid images into base64 HTML', function(done){
+  it('should include cid images into base64 HTML', function(done) {
     var document = {
       data: {},
       metadata: {},
@@ -144,6 +144,27 @@ describe('Test EML', function() {
       }
 
       changes.should.have.property('data').with.property('html').and.include("6WuNurkZ3XOx8a5UuO+fDm66FRskS+RmVqwFo9");
+
+      done();
+    });
+  });
+
+  it('should remove bad cid images into base64 HTML', function(done) {
+    var document = {
+      data: {},
+      metadata: {},
+      access_token: "123",
+      identifier: "azerty",
+    };
+
+    var changes = anyfetchFileHydrater.defaultChanges();
+
+    eml(__dirname + "/samples/ninja-cid.eml", document, changes, function(err, changes) {
+      if(err) {
+        throw err;
+      }
+
+      changes.should.have.property('data').with.property('html').and.not.include("cid:");
 
       done();
     });
