@@ -33,7 +33,8 @@
     "node-html-encoder": "0.0.2",
     "anyfetch": "^0.2.27",
     "nodetime": "^0.8.15",
-    "newrelic": "^1.5.5"
+    "newrelic": "^1.5.5",
+    "npm-cid": "0.1.x"
   },
   "devDependencies": {
     "mocha": "1.17.x",

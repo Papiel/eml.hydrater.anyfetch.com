@@ -7,4 +7,4 @@ Hydrate EML documents.
 Git clone, then `npm intall`.
 You can now `npm test`.
 
-Support: `support@papiel.fr`.
+Support: `support@anyfetch.com`.
