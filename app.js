@@ -1,7 +1,7 @@
 'use strict';
 
 // Load configuration and initialize server
-var anyfetchFileHydrater = require('anyfetch-file-hydrater');
+var anyfetchHydrater = require('anyfetch-hydrater');
 
 var config = require('./config/configuration.js');
 var hydrater = require('./lib/');
@@ -18,7 +18,7 @@ var serverConfig = {
   hydrater_function: hydrater
 };
 
-var server = anyfetchFileHydrater.createServer(serverConfig);
+var server = anyfetchHydrater.createServer(serverConfig);
 
 // Expose the server
 module.exports = server;
