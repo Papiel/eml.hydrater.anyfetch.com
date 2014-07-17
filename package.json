@@ -29,17 +29,17 @@
   "dependencies": {
     "async": "0.9.x",
     "anyfetch-hydrater": "^0.3.1",
-    "mailparser": "~0.4.1",
+    "mailparser": "~0.4.4",
     "node-html-encoder": "0.0.2",
     "anyfetch": "^0.2.27",
     "nodetime": "^0.8.15",
     "npm-cid": "0.1.x"
   },
   "devDependencies": {
-    "mocha": "1.17.x",
-    "should": "3.1.x",
-    "supertest": "0.9.x",
-    "jshint": "2.4.x"
+    "mocha": "1.20.x",
+    "should": "4.0.x",
+    "supertest": "0.13.x",
+    "jshint": "2.5.x"
   },
   "licence": "MIT",
   "engines": {

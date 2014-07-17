@@ -62,7 +62,7 @@ describe('Test EML', function() {
         throw err;
       }
 
-      changes.should.have.property('metadata').with.property('text').and.include('Hello there!');
+      changes.should.have.property('metadata').with.property('text').and.containDeep('Hello there!');
       changes.should.have.property('data').with.property('html', '<div dir="ltr">Hello there! In html.<br></div>');
 
       done();
@@ -143,7 +143,7 @@ describe('Test EML', function() {
         throw err;
       }
 
-      changes.should.have.property('data').with.property('html').and.include("6WuNurkZ3XOx8a5UuO+fDm66FRskS+RmVqwFo9");
+      changes.should.have.property('data').with.property('html').and.containDeep("6WuNurkZ3XOx8a5UuO+fDm66FRskS+RmVqwFo9");
 
       done();
     });
@@ -164,7 +164,7 @@ describe('Test EML', function() {
         throw err;
       }
 
-      changes.should.have.property('data').with.property('html').and.not.include("cid:");
+      changes.should.have.property('data').with.property('html').and.not.containDeep("cid:");
 
       done();
     });
