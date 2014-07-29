@@ -3,25 +3,22 @@
 require('should');
 
 var eml = require('../lib/');
-var AnyfetchClient = require('anyfetch');
+var Anyfetch = require('anyfetch');
 var anyfetchHydrater = require('anyfetch-hydrater');
 
-process.env.ANYFETCH_API_URL = 'http://localhost:1338';
-var countFile = 0;
-var cb = function(url){
-  if (url.indexOf("/file") !== -1) {
-    countFile += 1;
-  }
-};
 
-// Create a fake HTTP server
-var apiServer = AnyfetchClient.debug.createTestApiServer(cb);
-apiServer.listen(1338);
-after(function(){
-  apiServer.close();
-});
+
 
 describe('Test EML', function() {
+  // Create a fake HTTP server
+  var countFile = 0;
+
+  var apiServer = Anyfetch.createMockServer();
+  apiServer.listen(1338);
+  after(function(){
+    apiServer.close();
+  });
+
   it('returns basic data', function(done) {
     var document = {
       data: {},
@@ -108,8 +105,7 @@ describe('Test EML', function() {
     });
   });
 
-
-  it('create new documents for each attachment', function(done) {
+  it.only('create new documents for each attachment', function(done) {
     var document = {
       data: {},
       metadata: {},
@@ -119,13 +115,16 @@ describe('Test EML', function() {
 
     var changes = anyfetchHydrater.defaultChanges();
 
-    eml(__dirname + "/samples/attachment.eml", document, changes, function(err) {
+    var finalCb = function(err) {
       if(err) {
         throw err;
       }
       countFile.should.eql(1);
       done();
-    });
+    };
+    finalCb.apiUrl = 'http://localhost:1338';
+
+    eml(__dirname + "/samples/attachment.eml", document, changes, finalCb);
   });
 
   it('should include cid images into base64 HTML', function(done) {
