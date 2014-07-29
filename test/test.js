@@ -7,14 +7,30 @@ var Anyfetch = require('anyfetch');
 var anyfetchHydrater = require('anyfetch-hydrater');
 
 
-
-
 describe('Test EML', function() {
-  // Create a fake HTTP server
+  var port = 1338;
+  var apiUrl = 'http://localhost:' + port;
+
   var countFile = 0;
 
-  var apiServer = Anyfetch.createMockServer();
-  apiServer.listen(1338);
+  var uploadDocument = function(req, res ,next){
+    countFile += 1;
+    res.send(204);
+    next();
+  };
+
+  var apiServer;
+
+  before(function() {
+    // Create a fake HTTP server
+    apiServer = Anyfetch.createMockServer();
+    apiServer.override("post", "/documents/:id/file", uploadDocument);
+    apiServer.listen(port, function() {
+      Anyfetch.setApiUrl(apiUrl);
+    });
+  });
+
+
   after(function(){
     apiServer.close();
   });
@@ -105,7 +121,7 @@ describe('Test EML', function() {
     });
   });
 
-  it.only('create new documents for each attachment', function(done) {
+  it('create new documents for each attachment', function(done) {
     var document = {
       data: {},
       metadata: {},
@@ -158,15 +174,16 @@ describe('Test EML', function() {
 
     var changes = anyfetchHydrater.defaultChanges();
 
-    eml(__dirname + "/samples/ninja-cid.eml", document, changes, function(err, changes) {
+    var finalCb = function(err, changes) {
       if(err) {
         throw err;
       }
-
       changes.should.have.property('data').with.property('html').and.not.containDeep("cid:");
-
       done();
-    });
+    };
+    finalCb.apiUrl = 'http://localhost:1338';
+
+    eml(__dirname + "/samples/ninja-cid.eml", document, changes, finalCb);
   });
 
   it('should have a date', function(done){
