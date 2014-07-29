@@ -3,25 +3,38 @@
 require('should');
 
 var eml = require('../lib/');
-var AnyfetchClient = require('anyfetch');
+var Anyfetch = require('anyfetch');
 var anyfetchHydrater = require('anyfetch-hydrater');
 
-process.env.ANYFETCH_API_URL = 'http://localhost:1338';
-var countFile = 0;
-var cb = function(url){
-  if (url.indexOf("/file") !== -1) {
-    countFile += 1;
-  }
-};
-
-// Create a fake HTTP server
-var apiServer = AnyfetchClient.debug.createTestApiServer(cb);
-apiServer.listen(1338);
-after(function(){
-  apiServer.close();
-});
 
 describe('Test EML', function() {
+  var port = 1338;
+  var apiUrl = 'http://localhost:' + port;
+
+  var countFile = 0;
+
+  var uploadDocument = function(req, res ,next){
+    countFile += 1;
+    res.send(204);
+    next();
+  };
+
+  var apiServer;
+
+  before(function() {
+    // Create a fake HTTP server
+    apiServer = Anyfetch.createMockServer();
+    apiServer.override("post", "/documents/:id/file", uploadDocument);
+    apiServer.listen(port, function() {
+      Anyfetch.setApiUrl(apiUrl);
+    });
+  });
+
+
+  after(function(){
+    apiServer.close();
+  });
+
   it('returns basic data', function(done) {
     var document = {
       data: {},
@@ -108,7 +121,6 @@ describe('Test EML', function() {
     });
   });
 
-
   it('create new documents for each attachment', function(done) {
     var document = {
       data: {},
@@ -119,13 +131,16 @@ describe('Test EML', function() {
 
     var changes = anyfetchHydrater.defaultChanges();
 
-    eml(__dirname + "/samples/attachment.eml", document, changes, function(err) {
+    var finalCb = function(err) {
       if(err) {
         throw err;
       }
       countFile.should.eql(1);
       done();
-    });
+    };
+    finalCb.apiUrl = 'http://localhost:1338';
+
+    eml(__dirname + "/samples/attachment.eml", document, changes, finalCb);
   });
 
   it('should include cid images into base64 HTML', function(done) {
@@ -159,15 +174,16 @@ describe('Test EML', function() {
 
     var changes = anyfetchHydrater.defaultChanges();
 
-    eml(__dirname + "/samples/ninja-cid.eml", document, changes, function(err, changes) {
+    var finalCb = function(err, changes) {
       if(err) {
         throw err;
       }
-
       changes.should.have.property('data').with.property('html').and.not.containDeep("cid:");
-
       done();
-    });
+    };
+    finalCb.apiUrl = 'http://localhost:1338';
+
+    eml(__dirname + "/samples/ninja-cid.eml", document, changes, finalCb);
   });
 
   it('should have a date', function(done){
