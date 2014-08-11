@@ -28,11 +28,10 @@
   ],
   "dependencies": {
     "async": "0.9.x",
-    "anyfetch-hydrater": "^0.3.1",
+    "anyfetch-hydrater": "^0.3.7",
     "mailparser": "~0.4.4",
     "node-html-encoder": "0.0.2",
     "anyfetch": "^2.0.0",
-    "nodetime": "^0.8.15",
     "npm-cid": "0.1.x",
     "rarity": "~2.1.1"
   },
