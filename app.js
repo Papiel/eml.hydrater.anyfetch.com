@@ -4,7 +4,6 @@
 var anyfetchHydrater = require('anyfetch-hydrater');
 
 var config = require('./config/configuration.js');
-var hydrater = require('./lib/');
 
 var http = require('http');
 
@@ -15,7 +14,7 @@ http.globalAgent.maxSockets = config.maxSockets;
 
 var serverConfig = {
   concurrency: config.concurrency,
-  hydrater_function: hydrater
+  hydrater_function: __diname + '/lib/index.js'
 };
 
 var server = anyfetchHydrater.createServer(serverConfig);
