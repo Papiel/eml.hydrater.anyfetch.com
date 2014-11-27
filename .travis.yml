@@ -1,10 +1,5 @@
 language: node_js
 node_js:
 - '0.10'
-deploy:
-  provider: heroku
-  api_key:
-    secure: fUihfL80UWloLO7cqB2yDuxSWuxGlGcagvE/UzzJpNtK8trxwLKcD36snRGW5RJ0Nj1XLZg22sb4qkMXhRChlHf6xl+mVApGP23ANzgrbjceiG3Abx7xUjoxt9i1JZRmx9TlACNizO/OcaiTVgqShW0zic9hs3nSgnI5iSc615c=
-  app: anyfetch-hydrater-eml
-  on:
-    repo: Papiel/eml.hydrater.anyfetch.com
+services:
+  - redis-server
