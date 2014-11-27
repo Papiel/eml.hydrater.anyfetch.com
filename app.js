@@ -12,12 +12,9 @@ var http = require('http');
 // See http://markdawson.tumblr.com/post/17525116003/node
 http.globalAgent.maxSockets = config.maxSockets;
 
-var serverConfig = {
-  concurrency: config.concurrency,
-  hydrater_function: __dirname + '/lib/index.js'
-};
+config.hydrater_function = __dirname + '/lib/index.js';
 
-var server = anyfetchHydrater.createServer(serverConfig);
+var server = anyfetchHydrater.createServer(config);
 
 // Expose the server
 module.exports = server;
