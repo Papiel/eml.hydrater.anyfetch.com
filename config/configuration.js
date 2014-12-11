@@ -19,7 +19,9 @@ module.exports = {
   port: process.env.PORT || defaultPort,
   maxSockets: process.env.MAX_SOCKET || 50,
 
-  concurrency: process.env.HYDRATER_EML_CONCURRENCY || defaultConcurrency,
+  concurrency: process.env.CONCURRENCY || defaultConcurrency,
+  tasksPerProcess: process.env.TASKS_PER_PROCESS,
+
   appName: process.env.APP_NAME || 'eml-hydrater',
   redisUrl: process.env.REDIS_URL,
 
