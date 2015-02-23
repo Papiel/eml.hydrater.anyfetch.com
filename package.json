@@ -29,18 +29,18 @@
   "dependencies": {
     "async": "0.9.x",
     "anyfetch-hydrater": "^2.0.8",
-    "mailparser": "~0.4.6",
+    "mailparser": "~0.4.8",
     "node-html-encoder": "0.0.2",
-    "anyfetch": "^2.1.3",
+    "anyfetch": "^2.1.9",
     "npm-cid": "0.1.x",
     "rarity": "~2.1.1"
   },
   "devDependencies": {
-    "mocha": "^2.0.1",
-    "should": "^4.3.1",
+    "mocha": "^2.1.0",
+    "should": "^5.0.1",
     "supertest": "^0.15.0",
-    "jshint": "2.5.x",
-    "sinon": "~1.12.1"
+    "jshint": "2.6.x",
+    "sinon": "~1.12.2"
   },
   "licence": "MIT",
   "engines": {
