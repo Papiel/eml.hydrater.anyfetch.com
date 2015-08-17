@@ -30,7 +30,7 @@
     "anyfetch": "^2.1.9",
     "anyfetch-hydrater": "^2.2.0",
     "async": "0.9.x",
-    "heroku-self-ping": "^1.1.1",
+    "heroku-self-ping": "^1.1.2",
     "mailparser": "~0.4.8",
     "node-html-encoder": "0.0.2",
     "npm-cid": "0.1.x",
